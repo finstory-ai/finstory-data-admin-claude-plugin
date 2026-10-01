@@ -1,0 +1,15 @@
+{
+  "name": "finstory-data-admin",
+  "owner": {
+    "name": "Finstory, Inc.",
+    "url": "https://finstory.ai"
+  },
+  "description": "The finstory data admin plugin for Claude, from Finstory, Inc.",
+  "plugins": [
+    {
+      "name": "finstory-data-admin",
+      "source": "./",
+      "description": "Load budgets, forecasts and actuals into finstory from a file, restate account structures, and build a model from a source system. Bundles the finstory data admin connector with three skills."
+    }
+  ]
+}
