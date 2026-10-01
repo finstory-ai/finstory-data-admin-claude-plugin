@@ -12,7 +12,7 @@ This plugin is separate from the [finstory plugin](https://github.com/finstory-a
 ## Requirements
 
 - A finstory subscription, and a finstory login with access to your company's workspace.
-- A finstory role that may load data and change models. Creating or changing connections to source systems, and creating or running schedules, needs an administrator. Claude tells you when a step needs a role you don't have.
+- A finstory role that may load data and change models. Creating, changing or syncing connections to source systems, and creating, changing or running schedules, needs an administrator. Claude tells you when a step needs a role you don't have.
 - A paid Claude plan.
 - To load a file, Claude must read it on your computer and send the finished CSV to finstory, so the session needs local files, code execution and web access, as in Claude Code or Cowork. In a plain claude.ai chat Claude can check a file against your workspace but cannot load it.
 - In claude.ai and the desktop app, skills need **Code execution and file creation** switched on in Claude's settings. The skills themselves run no code; the setting is what lets Claude load skills.
