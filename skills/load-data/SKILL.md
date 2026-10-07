@@ -19,7 +19,7 @@ This skill needs the finstory data admin connector, which comes with this plugin
 
 Call `get_data_model` first in every session (once per model). It returns what this workspace actually holds, the layout finstory loads, the limits and the procedure to run over the file. Where the procedure differs from the summary here, the procedure wins.
 
-`get_data_model`, read the file and count, `profile_file`, `get_load_context`, put the questions to the user, `validate_load`, `ensure_dimension_members`, `validate_load` again. Then, once per load: rollback copy, `begin_data_load`, confirm, `commit_data_load`, upload the CSV, `get_load_status`.
+`get_data_model`, read the file and count, `profile_file`, `get_load_context`, put the questions to the user, `validate_load`, `ensure_dimension_members`, `validate_load` again. Then, once per load: rollback copy, `begin_data_load`, check the upload route, confirm, `commit_data_load`, upload the CSV, `get_load_status`.
 
 1. **Count on the user's computer.** Read the workbook and compute the counts the procedure lists. Send `profile_file` those counts and the short samples of values the procedure asks for, never rows. The bytes stay on disk: write a CSV and upload it yourself, and never put file contents in a tool argument.
 2. **Mirror what is already there.** `get_load_context` returns the existing data for the same scope: the real codes, the shape of a row, what the load would replace, and the rows to restore it from if they are all there ([references/confirmations.md](references/confirmations.md)). Map columns to that, never by header: a column called "Region" can hold labels where the workspace holds codes. When the scope is empty it falls back to a nearby one and says which; tell the user.

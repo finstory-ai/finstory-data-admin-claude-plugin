@@ -2,6 +2,10 @@
 
 All notable changes to the finstory data admin plugin are recorded here. The version is the one in `.claude-plugin/plugin.json`.
 
+## 1.0.1 (2026-10-07)
+
+- `load-data`: the check of the upload route now runs after `begin_data_load` (which returns the upload URL) and before the confirmation, and passes only on a 401 "upload_token_required" answer. Any other answer, a 404 included, stops the load before anything is deleted.
+
 ## 1.0.0 (2026-10-01)
 
 First release.
