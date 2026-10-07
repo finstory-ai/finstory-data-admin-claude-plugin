@@ -1,7 +1,7 @@
 {
   "name": "finstory-data-admin",
   "displayName": "finstory data admin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Load numbers into your finstory workspace from a file, restate its account structures and build a model from a source system, from a Claude conversation. Bundles the finstory data admin connector with three skills.",
   "author": {
     "name": "Finstory, Inc.",

@@ -2,6 +2,10 @@
 
 All notable changes to the finstory data admin plugin are recorded here. The version is the one in `.claude-plugin/plugin.json`.
 
+## 1.0.2 (2026-10-07)
+
+- `load-data`: a load can add to a slice instead of replacing it (`begin_data_load` with `mode` "append", for new accounts, entities or periods). The skill asks which the user wants, skips the rollback copy because nothing is deleted, and handles an upload refused as `duplicate_keys` by showing the rows and asking before adding to figures that are already there. Where the connector has no `mode` yet, every load still replaces.
+
 ## 1.0.1 (2026-10-07)
 
 - `load-data`: the check of the upload route now runs after `begin_data_load` (which returns the upload URL) and before the confirmation, and passes only on a 401 "upload_token_required" answer. Any other answer, a 404 included, stops the load before anything is deleted.

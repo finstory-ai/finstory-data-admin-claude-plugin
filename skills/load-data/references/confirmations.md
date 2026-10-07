@@ -22,6 +22,15 @@ Up to `commit_data_load`, stopping costs nothing. That step deletes what the loa
 - **A restore** is a load of the rollback file, confirmed like any other: validate, reserve, confirm, commit, upload, reconcile.
 - **Several loads from one file** run one after another, each with its own confirmation. If one fails, don't start the next until the state of the first is clear.
 
+## Adding instead of replacing
+
+Adding suits a file of figures the slice does not hold yet, such as new accounts for periods already loaded. It runs the same sequence with these differences:
+
+- **Ask first.** Replace the slice, or add to it? With `mode` "append", `begin_data_load` measures the slice as usual and its `confirmation_prompt` says nothing will be deleted and what is added on top of what is there. If `begin_data_load` has no `mode` parameter, this finstory cannot add yet: every load replaces, so say so.
+- **No rollback copy.** Nothing is deleted, so there is nothing to restore. Check the upload route as for a replace. `commit_data_load` deletes nothing; `confirm_delete` true records the user's yes to the addition.
+- **Rows that are already there.** The upload refuses a file whose rows match a figure the slice already holds (same account, entity, scenario, year, periods and breakdowns): it answers 409 `duplicate_keys` with the count and examples, and writes nothing. Show the user both. Remove those rows from the file, or load as a replace instead; post again with `?allow_duplicates=true` on the upload URL only when the user says adding to those figures is what they want.
+- **Reconcile.** `get_load_status` expects the rows that were there plus the file's. If the upload fails part-way, nothing was deleted: rows that landed are refused as `duplicate_keys` on a second post, so post only the rows still missing.
+
 ## After a good load
 
 Say what was reconciled in the user's words ("48,060 rows are in place, totalling 200.0m"), and offer to check the new figures against the file's own totals with the financial-questions skill of the finstory plugin.

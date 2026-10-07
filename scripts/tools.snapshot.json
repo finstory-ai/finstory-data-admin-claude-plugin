@@ -66,10 +66,12 @@
     "story_update_page"
   ],
   "knownFields": [
+    "allow_duplicates",
     "choose_with",
     "confirm_delete",
     "confirmation_prompt",
     "confirmed_by_user",
+    "duplicate_keys",
     "is_empty",
     "login_url",
     "missing_defaults",
